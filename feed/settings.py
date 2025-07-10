@@ -10,7 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 import os
+import socket
 from pathlib import Path
+from decouple import config, Csv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-q+lt&rkte)9w8v5vd$6o2(tss$m$o68va0p&-l_g!tv2ml=n^u'
+SECRET_KEY = config('DJANGO_SECRET_KEY', default='unsafe-dev-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost', cast=Csv())
 
 
 # Application definition
@@ -81,12 +83,26 @@ WSGI_APPLICATION = 'feed.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# Detect current host
+CURRENT_HOST = socket.gethostname()
+
+# Simple domain/IP check (you can also use os.getenv('ENV') style detection)
+IS_LOCALHOST = 'localhost' in ALLOWED_HOSTS or '127.0.0.1' in ALLOWED_HOSTS
+
+# Use different database based on environment
+if IS_LOCALHOST or CURRENT_HOST.startswith("Shivahari") or "local" in CURRENT_HOST.lower():
+    # 🧪 Local development: SQLite
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / "db.sqlite3",
+        }
     }
-}
+else:
+    # 🚀 Production: PostgreSQL (from DATABASE_URL in .env)
+    DATABASES = {
+        'default': dj_database_url.config(default=config('DATABASE_URL'))
+    }
 
 
 # Password validation
@@ -131,6 +147,7 @@ STATIC_URL = 'static/'
 #setting static files root
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 #setting media root
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
