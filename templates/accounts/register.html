@@ -1,0 +1,47 @@
+{% extends 'basic/base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+   <link href="{% static 'css/login.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block title %}Register {% endblock %}
+
+{% block content %}
+
+<div class="register-wrapper">
+    <div class="top">
+        <h1>Welcome to Feed Formulation System </h1>
+        <strong><p>Please Register yourself for your contribution.</p></strong>
+    </div>
+
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="fieldWrapper">
+            {{ field.errors }}
+            {{ field.label_tag }} 
+            {{ field }}
+            <div class="help-text">
+                {% if field.help_text %}
+                <p class="help" id="{{ field.auto_id }}_helptext">
+                {{ field.help_text|safe }}
+                </p>
+                {% endif %}
+            </div>
+    
+        </div>
+        {% endfor %}
+
+        <div class="register">
+            <input type="submit" value="Register" id="register-btn">
+        </div>
+        <div id="have-account">
+            Already have an account? <a href="{% url 'accounts:login' %}">Login Now</a></div>
+    </form>
+    
+</div>
+
+
+{% endblock %}

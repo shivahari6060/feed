@@ -1,0 +1,70 @@
+{% extends 'basic/index.html' %}
+{% load static %}
+
+{% block stylesheet %}
+   <link href="{% static 'css/main.css' %}" rel="stylesheet"/>
+   <link href="{% static 'css/inventory.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block title %}Inventory Management{% endblock %}
+
+{% block content %}
+
+<div class="invt-container">
+    <div class="invt-list">
+        <div class="top">Search Bar</div>
+        <div class="inventory">
+            {% if ingredients %}
+            <table border="1">
+                <tr>
+                    <th>Name</th>
+                    <th>Unit</th>
+                    <th>Minimum Threshold</th>
+                    <th>Current Stock</th>
+                    <th>Created By</th>
+                    <th>Edit</th>
+                </tr>
+                <tr>
+                {% for ingredient in ingredients %}
+                    <td>{{ingredient.name}}</td>
+                    <td>{{ingredient.unit}}</td>
+                    <td>{{ingredient.min_threshold}}</td>
+                    <td>{{ingredient.current_stock}}</td>
+                    <td>{{ingredient.created_by}}</td>
+                    <td>
+                        <span><a href="{% url 'inventory:ingredient-update' ingredient.pk %}">Update</a></span>
+                        <span><a href="">Delete</a></span>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+            <p>No inventory available</p>
+            {% endif %}
+            
+            
+        </div>
+        <div class="add-ingredient">
+            <form action="{% url 'inventory:inventory-list' %}" method="POST">
+                {% csrf_token %}
+                {{form}}
+                <input type="submit" value="Submit">
+            </form>
+            
+        </div>
+    </div>
+    <div class="invt-right">
+        <div class="inventory-recent">
+            {% for i in re_ingredients %}
+            <div><strong>{{ i.created_by }}</strong> 
+                added {{i.current_stock}} {{i.unit}}
+                of {{i.name}}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %} {% endblock %}

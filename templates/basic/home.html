@@ -1,0 +1,71 @@
+{% extends 'basic/index.html' %}
+{% load static %}
+
+{% block stylesheet %}
+   <link href="{% static 'css/main.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block title %}Home page {% endblock %}
+
+{% block content %}
+<div class="home-container">
+    <h1>Our Services</h1>
+    <div class="services">
+        <div class="service">
+            <div class="home-card">
+                <div class="top">INVENTORY</div>
+                <hr>
+                <div class="body">
+                    <p>Lorem ipsum dolor sit amet consectetur 
+                        adipisicing elit. Ipsam ea, architecto 
+                        consequuntur saepe, eum, vero ipsa enim 
+                        impedit eos explicabo earum at ab quod. 
+                        Neque, reprehenderit! Repudiandae
+                         quisquam amet perspiciatis?</p>
+                </div>
+                <div class="bottom">
+                    <a href="#">Inventory</a>
+                </div>
+            </div>
+        </div>
+        <div class="service">
+            <div class="home-card">
+                <div class="top">PRODUCTION</div>
+                <hr>
+                <div class="body">
+                    <p>Lorem ipsum dolor sit amet consectetur 
+                        adipisicing elit. Ipsam ea, architecto 
+                        consequuntur saepe, eum, vero ipsa enim 
+                        impedit eos explicabo earum at ab quod. 
+                        Neque, reprehenderit! Repudiandae
+                         quisquam amet perspiciatis?</p>
+                </div>
+                <div class="bottom">
+                    <a href="#">Production</a>
+                </div>
+            </div>
+        </div>
+        <div class="service">
+            <div class="home-card">
+                <div class="top">SALES</div>
+                <hr>
+                <div class="body">
+                    <p>Lorem ipsum dolor sit amet consectetur 
+                        adipisicing elit. Ipsam ea, architecto 
+                        consequuntur saepe, eum, vero ipsa enim 
+                        impedit eos explicabo earum at ab quod. 
+                        Neque, reprehenderit! Repudiandae
+                         quisquam amet perspiciatis?</p>
+                </div>
+                <div class="bottom">
+                    <a href="#">Sales</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block script %} {% endblock %}

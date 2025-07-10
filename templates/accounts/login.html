@@ -1,0 +1,52 @@
+{% extends 'basic/base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+   <link href="{% static 'css/login.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block title %}Login Page {% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <div class="image">
+        <img src="" alt="this is image">
+    </div>
+    <div class="login">
+        <h1>Feed Formulation System Login </h1>
+        
+
+        <form method="POST" action="">
+            {% csrf_token %}
+            {% for field in form %}
+        <div class="fieldWrapper">
+            {{ field.errors }}
+            {{ field.label_tag }} 
+            {{ field }}
+            <div class="help-text">
+                {% if field.help_text %}
+                <p class="help" id="{{ field.auto_id }}_helptext">
+                {{ field.help_text|safe }}
+                </p>
+                {% endif %}
+            </div>
+    
+        </div>
+        {% endfor %}
+
+            <div class="looged-in">
+               <label for=""><input type="checkbox"> Keep me logged in</label> 
+            </div>
+            <button type="submit" id="btn-login">Log In</button>
+            <div>
+                Haven't you got any account yet? 
+                <a href="{% url 'accounts:register' %}">Create an account !</a>
+            </div>
+        </form>
+        
+        
+    </div>
+</div>
+
+
+{% endblock %}

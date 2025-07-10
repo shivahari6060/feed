@@ -1,0 +1,25 @@
+{% extends 'basic/index.html' %}
+{% load static %}
+
+{% block stylesheet %}
+   <link href="{% static 'css/main.css' %}" rel="stylesheet"/>
+   <link href="{% static 'css/production.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block title %}Formula Detail{% endblock %}
+
+{% block content %}
+
+<div>
+    <h1>Welcome to production page</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{prod_form}}
+        <input type="submit" value="Start Production">
+    </form>
+</div>
+
+
+{% endblock %}
+
+{% block script %} {% endblock %}

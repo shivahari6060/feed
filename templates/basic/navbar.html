@@ -1,0 +1,44 @@
+{% load static %}
+
+<div class="navbar">
+    <div class="navbar-logo">
+        <p><a href="{% url 'home' %}">Feed</a><br>
+            <span>
+                <em>Supporting Management</em>
+            </span>
+        </p>
+    </div>
+    <div class="navbar-menu">
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="{% url 'inventory:inventory-list' %}">Inventory</a></li>
+            <li><a href="{% url 'production:formula-create' %}">Formula</a></li>
+            <li><a href="{% url 'production:production' %}">Production</a></li>
+            <li><a href="{% url 'production:production-list' %}">Production List</a></li>
+            <li><a href="#">Reports</a></li>
+        </ul>
+    </div>
+    <div class="navbar-end">
+        <ul>
+            {% if request.user.is_authenticated %}
+            <li><a href="#">{{request.user.username}}</a></li>
+            
+            <li><a href="{% url 'accounts:logout' %}">
+                  <button id="btnlogout">Logout</button>
+                </a>
+            </li>
+            {% else %}
+            <li><a href="{% url 'accounts:login' %}">
+                  <button id="btnlogin">Login</button>
+                </a>
+            </li>
+            <li><a href="{% url 'accounts:register' %}">
+                  <button id="btnregister">Register</button>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+<hr>
