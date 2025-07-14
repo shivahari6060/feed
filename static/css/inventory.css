@@ -11,6 +11,7 @@
     --clr-primary-variant: #111e88;
     --clr-dark-variant: #677483;
     --clr-color-background: #f6f6f9;
+    --clr-table-header: #212529;
 
     --card-border-radius: 2rem;
     --border-radius-1: 0.4rem;
@@ -19,7 +20,7 @@
 
     --card-padding: 1.8rem;
     --padding-1: 1.2rem;
-    --box-shadow: 0 2rem 3rem var(--clr-light);
+    --box-shadow: 0 2rem 2rem var(--clr-light);
 }
 
 *{
@@ -76,30 +77,208 @@ a{
 /* Inventory section start */
 .invt-container{
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 4fr 1fr;
 }
 
 /* Inventory list  */
-.invt-container .invt-list{
-    border: 1px solid red;
+/* Search bar */
+/* search bar start */
+.invt-container .top .search-form{
+    max-width: 30%;
+    margin: 0 0 0 0.8rem;
 }
 
-/* Search bar */
-.invt-container .invt-list .top{
-    border: 1px solid coral;
+.invt-container .top .search-form .search-container{
+    margin: 1rem auto;
+    position: relative;
+    width: 100%;
 }
+
+.invt-container .top .search-form .search-container span{
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--clr-dark-variant);
+    font-size: 1.2rem;
+}
+
+.invt-container .top .search-form .search-container .search-input{
+    width: 100%;
+    background-color: var(--clr-white);
+    padding: 0.5rem 2rem;
+    border-radius: var(--border-radius-1);
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.invt-container .top .search-form .search-container .search-input:focus{
+    border-color: #5a67d8;
+    box-shadow: 0 0 5px rgba(90, 103, 216, 0.6);
+    outline: none;
+}
+/* end of search bar */
+
 
 /* Inventory list */
 .invt-container .invt-list .inventory{
-    border: 1px solid green;
+    /* border: 2px solid red; */
+    background-color: var(--clr-white);
+    border-radius: var(--border-radius-1);
+    padding: 0.8rem;
+    margin: 0.5rem auto;
+    transition: all 0.3s ease;
 }
+.invt-container .invt-list .inventory:hover{
+    box-shadow: none;
+}
+.invt-container .invt-list .inventory h2{
+    text-align: center;
+    margin-bottom: 0.3rem;
+}
+/* Inventory table */
+.invt-container .inventory .inventory-table{
+    width:100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+.invt-container .inventory .inventory-table th, td{
+    padding:0.6rem;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.invt-container .inventory .inventory-table th{
+    background-color: var(--clr-table-header);
+    color: var(--clr-white);
+}
+
+.invt-container .inventory .inventory-table tr>td div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.invt-container .inventory .inventory-table td .update-item a{
+    color: var(--clr-primary-variant);
+}
+
+.invt-container .inventory .inventory-table td .delete-item a{
+    color: var(--clr-danger);
+}
+
+
+.invt-container .inventory .inventory-table tr:nth-child(even){
+    background-color: #f9f9f9;
+}
+/* end inventory table */
 
 /* Add ingredient section */
 .invt-container .invt-list .add-ingredient{
-    border: 1px solid red;
+    margin-top: 1.5rem;
+    max-width: 65%;
+    margin: 0 auto;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--card-border-radius);
+    transition: all 0.3s ease;
 }
 
-/* Inventory right section  */
-.invt-container .invt-right{
-    border: 1px solid green;
+.invt-container .invt-list .add-ingredient h2{
+    text-align: center;
 }
+
+.invt-container .invt-list .add-ingredient form{
+    width: 100%;
+    margin: 1rem auto;
+    padding: 1rem 2rem;
+
+}
+.invt-container .invt-list .add-ingredient:hover{
+    box-shadow: none;
+}
+/*  Input section design*/
+.invt-container .invt-list .add-ingredient form div{
+    display: flex;
+    align-items: center;
+}
+.invt-container .invt-list .add-ingredient form label{
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: 500;
+    width: 18%;
+}
+.invt-container .invt-list .add-ingredient form ul li{
+    color:var(--clr-danger);
+}
+
+.invt-container .invt-list .add-ingredient form input, textarea{
+    border: 1px solid #ccc;
+    background-color: var(--clr-white);
+    border-radius: var(--border-radius-1);
+    transition: border-color 0.3s ease box-shadow 0.3s ease;
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+.invt-container .invt-list .add-ingredient form textarea{
+    height: 50px;
+}
+
+.invt-container .invt-list .add-ingredient form input:focus, textarea:focus{
+    border-color: #155204;
+    box-shadow: 0 0 5px rgba(90, 103, 216, 0.6);
+    outline:none;
+}
+
+.invt-container .invt-list .add-ingredient form input[type="submit"]{
+    width:45%;
+    border: none;
+    box-shadow: none;
+    margin: 0.5rem auto;
+    display: block;
+    background-color: var(--clr-dark);
+    color: var(--clr-white);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.invt-container .invt-list .add-ingredient form input[type="submit"]:hover{
+    background-color: var(--clr-dark-variant);
+}
+
+/* End Input section */
+
+/* Inventory right section  */
+/* Recent Added Ingredients */
+
+.invt-container .invt-right .inventory-recent{
+    width: 96%;
+    margin: 0 auto;
+    margin-top: 1rem;
+}
+
+.invt-container .invt-right .inventory-recent h2{
+    padding: 0.5rem;
+    text-align: center;
+    background-color: var(--clr-dark);
+    color: var(--clr-white);
+}
+
+.invt-container .invt-right .inventory-recent div{
+    width: 96%;
+    margin: 0.5rem;
+    background-color: var(--clr-white);
+    border-radius: var(--border-radius-1);
+    box-shadow: var(--box-shadow);
+    padding: 0.3rem 0.6rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-size: 0.85rem;
+ }
+
+ .invt-container .invt-right .inventory-recent div:hover{
+    box-shadow: none;
+ }
+/* End recent ingredients update */

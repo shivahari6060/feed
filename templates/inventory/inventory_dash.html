@@ -12,17 +12,37 @@
 
 <div class="invt-container">
     <div class="invt-list">
-        <div class="top">Search Bar</div>
+        <div class="top">
+            <!-- search  bar -->
+            <form method="GET" action="{% url 'inventory:ingredient-search' %}" class="search-form">
+                <div class="search-container">
+                    <span class="material-symbols-outlined">search</span>
+                    <input 
+                    type="text" 
+                    name="q" 
+                    placeholder="Search inventory items" 
+                    class="search-input" 
+                    />
+                </div>
+            </form>
+        </div>
+        <!-- end serach bar -->
+         <!-- Inventory table start -->
         <div class="inventory">
+            <div class="inventory-info">
+                <p>Total Inventory items: {{ingredients.count}}
+                </p>
+            </div>
+            <h2>Inventory List</h2>
             {% if ingredients %}
-            <table border="1">
+            <table border="1" class="inventory-table">
                 <tr>
                     <th>Name</th>
                     <th>Unit</th>
                     <th>Minimum Threshold</th>
                     <th>Current Stock</th>
                     <th>Created By</th>
-                    <th>Edit</th>
+                    <th>Action</th>
                 </tr>
                 <tr>
                 {% for ingredient in ingredients %}
@@ -32,8 +52,10 @@
                     <td>{{ingredient.current_stock}}</td>
                     <td>{{ingredient.created_by}}</td>
                     <td>
-                        <span><a href="{% url 'inventory:ingredient-update' ingredient.pk %}">Update</a></span>
-                        <span><a href="">Delete</a></span>
+                        <div>
+                            <span class="update-item"><a href="{% url 'inventory:ingredient-update' ingredient.pk %}">Update</a></span>
+                        <span class="delete-item"><a href="">Delete</a></span>
+                        </div>
                     </td>
                 </tr>
                 {% endfor %}
@@ -44,17 +66,27 @@
             
             
         </div>
+        <!-- end table inventory -->
+         
+        <!-- Form for Ingredient add -->
         <div class="add-ingredient">
+            <h2>Create New Ingredient</h2>
             <form action="{% url 'inventory:inventory-list' %}" method="POST">
                 {% csrf_token %}
-                {{form}}
+                {% for field in form %}
+                {{field.label_tag}}
+                {{field}}
+                {{field.errors}}
+                {% endfor %}
                 <input type="submit" value="Submit">
             </form>
             
         </div>
+        <!-- form end -->
     </div>
     <div class="invt-right">
         <div class="inventory-recent">
+            <h2>Recent Added Ingredients</h2>
             {% for i in re_ingredients %}
             <div><strong>{{ i.created_by }}</strong> 
                 added {{i.current_stock}} {{i.unit}}

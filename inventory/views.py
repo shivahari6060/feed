@@ -40,4 +40,21 @@ class IngredientUpdateView(LoginRequiredMixin, UpdateView):
     def form_valid(self, form):
         form.instance.updated_by = self.request.user
         return super().form_valid(form)
+    
+
+def search_ingredient(request):
+    query = request.GET.get('q', '') #get query from url
+    form = IngredientForm()
+    re_ingredients = Ingredient.objects.order_by('-created_at')
+    if query:
+        ingredients = Ingredient.objects.filter(name__icontains=query)
+    else:
+        ingredients = Ingredient.objects.all()
+    context ={
+        'ingredients':ingredients,
+        'query':query, 
+        'form':form,
+        're_ingredients': re_ingredients
+    }
+    return render(request, 'inventory/inventory_dash.html', context=context)
 
