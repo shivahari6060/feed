@@ -10,22 +10,33 @@
 
 {% block content %}
 <div class="for-container">
+    <div class="for-list">
+        <h1>Formulas</h1>
+    </div>
+
+    <div class="form-create">
+    
     <h2>Create New Formula</h2>
-<form method="post">
+    <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     
-    <h3>Ingredients</h3>
+    <h2>Add Ingredients To Formula</h2>
     {{ ingredient_formset.management_form }}
     {% for form in ingredient_formset %}
         <div class="ingredient-form">
-            {{ form.as_table }}
+
+                {{ form.as_table }}
         </div>
     {% endfor %}
-    <button type="button" id="add-form">Add More</button>
-    <button type="submit">Save Formula</button>
+    <div class="btn-formula">
+        <button type="button" id="add-form">Add Ingredient</button>
+        <button type="submit">Save Formula</button>
+    </div>
 </form>
 </div>
+</div>
+
 
 {% endblock %}
 

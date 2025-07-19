@@ -71,3 +71,107 @@ p{
 a{
     color: var(--clr-dark)
 }
+
+/* Formula creation form */
+.for-container .form-create{
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+}
+
+.for-container h2{
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.for-container form p{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.2rem;
+}
+
+.for-container label{
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: #34495e;
+}
+
+.for-container input,
+.for-container select,
+.for-container textarea {
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: var(--border-radius-1);
+    background-color: var(--clr-white);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.for-container textarea{
+    height: 4rem;
+}
+
+.for-container input:focus,
+.for-container select:focus,
+.for-container textarea:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    outline: none;
+}
+
+/* Now syling formset table */
+.for-container .ingredient-form {
+    background-color: white;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.ingredient-form:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.for-container .btn-formula{
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Button styling */
+button {
+    cursor: pointer;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-right: 0.5rem;
+}
+
+button[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    display: block;
+    margin-top: 1.5rem;
+    padding: 1rem 2rem;
+}
+
+button[id="add-form"] {
+    background-color: #3498db;
+    color: white;
+    display: block;
+    margin-top: 1.5rem;
+    padding: 1rem 2rem;
+}
+
+button[type="submit"]:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}

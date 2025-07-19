@@ -24,7 +24,7 @@ FormulaIngredientFormSet = forms.inlineformset_factory(
     FormulaIngredient,
     form=FormulaIngredientForm,
     extra=5,  # Show 5 empty ingredient slots by default
-    can_delete=True,
+    can_delete=False,
     min_num=1,  # At least one ingredient required
     validate_min=True,
     max_num=20,  # Maximum ingredients per formulation
