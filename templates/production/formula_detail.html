@@ -10,26 +10,56 @@
 
 {% block content %}
 
-<div>
-    <h1>{{ formula.name }}</h1>
-    <p><strong>Description:</strong> {{ formula.description }}</p>
-    <p><strong>Created at:</strong> {{ formula.created_at }}</p>
+<div class="formula-detail">
+    <h1><strong>Detail On Formula :</strong> {{formula.name}}</h1>
+    <div class="formula-detail-top">
+        <p><strong>Description on Formula:</strong> {{ formula.description }}</p>
+        <p><strong> Formula Created at:</strong> {{ formula.created_at }}</p>
+        <p><strong> Formula Created By:</strong> {{ formula.created_by }}</p>
+        <p><strong> Total Ingredients:</strong> {{ items.count }}</p>
+        
+    </div>
 
-    <h2>Ingredients</h2>
-    <table border="1">
+    <h2>Ingredients Used</h2>
+    <div class="formula-detail-table">
+        <table>
         <tr>
+            <th>S.N.</th>
             <th>Ingredient Name</th>
+            <th>Unit</th>
             <th>Percentage</th>
+            <th>Current Stock</th>
+            <th>Stock Required</th>
+            <th>Action</th>
         </tr>
         {% for item in items %}
             <tr>
+                <td>{{forloop.counter}}</td>
                 <td>{{ item.ingredient.name }}</td>
+                <td>{{item.ingredient.unit}}</td>
                 <td>{{ item.percentage }}</td>
+                <td>{{item.ingredient.current_stock}}</td>
+                <td>{{item.ingredient.current_stock}}</td>
+                <td><a href="{% url 'production:foring-delete' formula_id=formula.pk pk=item.pk %}">Delete</a></td>
             </tr>
         {% empty %}
             <tr><td colspan="2">No ingredients listed.</td></tr>
         {% endfor %}
-    </table>
+        </table>
+    </div>
+    <div class="new-formset">
+        
+    </div>
+    <div class="add-formula-ing">
+        <form action="">
+            <button class="add-ingredient">
+                <span class="material-symbols-outlined">
+                    add
+                </span>
+                Add Ingredient
+            </button>
+        </form>
+    </div>
 </div>
 
 

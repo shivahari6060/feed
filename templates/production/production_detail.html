@@ -10,8 +10,50 @@
 
 {% block content %}
 
-<div>
-    <h1>Welcome to production Detail View</h1>
+<div class="prod-detail-container">
+    <h1>Production Detail for {{production.formula}} formula</h1>
+    <div class="prod-detail">
+        <div class="prod-top">
+            <p>Production Formula: <strong>{{production.formula}}</strong></p>
+            <p>Production Unit: <strong>{{production.get_unit_display}}</strong></p>
+            <p>Production Batch Size: <strong>{{production.batch_size}}</strong></p>
+            <p>Production Date: <strong>{{production.production_date}}</strong></p>
+            <p>Production By: <strong>{{production.produced_by}}</strong></p>
+        </div>
+        <table class="prod-table">
+            <h2>Ingredients Used</h2>
+            <tr>
+                <th>S.N.</th>
+                <th>Ingredient</th>
+                <th>Unit</th>
+                <th>Percentage</th>
+                <!-- returns in Kg -->
+                <th>Previous Stock</th>
+                <th>Consumed Stock</th>
+                <th>Current Stock</th>
+            </tr>
+            {% for ingredient in ingredients %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{ingredient.ingredient}}</td>
+                <td>{{ingredient.unit}}</td>
+                <td>{{ingredient.percentage}}</td>
+                <td>{{ingredient.previous_stock}}</td>
+                <td>{{ingredient.consumed_quantity}}</td>
+                <td>{{ingredient.current_stock}}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td></td>
+                <td>Total</td>
+                <td></td>
+                <td>{{total_percentage}}</td>
+                <td></td>
+                <td>{{total_consumed}}</td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
 </div>
 
 

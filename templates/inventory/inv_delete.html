@@ -1,0 +1,26 @@
+{% extends 'basic/index.html' %}
+{% load static %}
+
+{% block stylesheet %}
+   <link href="{% static 'css/main.css' %}" rel="stylesheet"/>
+   <link href="{% static 'css/inventory.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block title %}Inventory Management{% endblock %}
+
+{% block content %}
+
+<div class="delete-page">
+    <h2>Confirm Deletion</h2>
+    <p>Are you sure you want to delete ingredient - "{{ object.name }}"?</p>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn-danger">Yes, delete</button>
+        <button><a href="{% url 'inventory:inventory-list' %}">Cancel</a></button>
+    </form>
+</div>
+
+{% endblock %}
+
+{% block script %} {% endblock %}

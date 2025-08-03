@@ -37,24 +37,28 @@
             {% if ingredients %}
             <table border="1" class="inventory-table">
                 <tr>
+                    <th>S.N.</th>
                     <th>Name</th>
                     <th>Unit</th>
-                    <th>Minimum Threshold</th>
+                    <th>Previous Stock</th>
                     <th>Current Stock</th>
+                    <th>Added Stock</th>
                     <th>Created By</th>
                     <th>Action</th>
                 </tr>
-                <tr>
                 {% for ingredient in ingredients %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
                     <td>{{ingredient.name}}</td>
                     <td>{{ingredient.unit}}</td>
-                    <td>{{ingredient.min_threshold}}</td>
+                    <td>{{ingredient.previous_stock}}</td>
                     <td>{{ingredient.current_stock}}</td>
+                    <td>{{ingredient.added_stock}}</td>
                     <td>{{ingredient.created_by}}</td>
                     <td>
                         <div>
                             <span class="update-item"><a href="{% url 'inventory:ingredient-update' ingredient.pk %}">Update</a></span>
-                        <span class="delete-item"><a href="">Delete</a></span>
+                        <span class="delete-item"><a href="{% url 'inventory:ingredient-delete' ingredient.pk %}">Delete</a></span>
                         </div>
                     </td>
                 </tr>
@@ -88,8 +92,9 @@
         <div class="inventory-recent">
             <h2>Recent Added Ingredients</h2>
             {% for i in re_ingredients %}
-            <div><strong>{{ i.created_by }}</strong> 
-                added {{i.current_stock}} {{i.unit}}
+            <div>
+                <strong>{{ i.created_by }}</strong> 
+                added {{i.added_stock}} {{i.unit}}
                 of {{i.name}}
             </div>
             {% endfor %}

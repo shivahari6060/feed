@@ -23,11 +23,11 @@ FormulaIngredientFormSet = forms.inlineformset_factory(
     Formula,
     FormulaIngredient,
     form=FormulaIngredientForm,
-    extra=5,  # Show 5 empty ingredient slots by default
+    extra=60,  # Show 5 empty ingredient slots by default
     can_delete=False,
     min_num=1,  # At least one ingredient required
     validate_min=True,
-    max_num=20,  # Maximum ingredients per formulation
+    max_num=60,  # Maximum ingredients per formulation
     validate_max=True,
 )
 
@@ -36,5 +36,5 @@ class ProductionBatchForm(ModelForm):
         model=ProductionBatch
         fields=['formula', 'unit', 'batch_size', 'notes']
         labels={
-            'unit': "Example: Kg, Tonne, Gram etc."
+            'unit': "Select Production Unit"
         }

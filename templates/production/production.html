@@ -10,13 +10,46 @@
 
 {% block content %}
 
-<div>
-    <h1>Welcome to production page</h1>
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{prod_form}}
-        <input type="submit" value="Start Production">
-    </form>
+<div class="prod-container">
+    <div class="prod-list">
+        <h2>Recent Productions</h2>
+        <div>
+            <table class="prod-table">
+                <tr>
+                    <th>S.N.</th>
+                    <th>Feed Formula</th>
+                    <th>Unit</th>
+                    <th>Quantity</th>
+                    <th>Date</th>
+                    <th>Produced By</th>
+                    <th>Details</th>
+                </tr>
+                {% for production in productions %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{production.formula}}</td>
+                    <td>{{production.unit}}</td>
+                    <td>{{production.batch_size}}</td>
+                    <td>{{production.production_date}}</td>
+                    <td>{{production.produced_by}}</td>
+                    <td>
+                        <span><a href="{% url 'production:production-detail' production.id %}">Details</a></span>
+                    </td>
+                </tr>
+                {% empty %}
+                <div>No Entries Found</div>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="prod-form">
+        <h2>Start Production</h2>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{prod_form}}
+            <input type="submit" value="Start Production">
+        </form>
+    </div>
 </div>
 
 

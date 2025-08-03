@@ -11,6 +11,10 @@
     --clr-primary-variant: #111e88;
     --clr-dark-variant: #677483;
     --clr-color-background: #f6f6f9;
+    --clr-card-background: #f8f9fa;
+    --clr-table-border: #ddd;
+    --clr-table-header: #212529;
+    --clr-info: #C9F0DD;
 
     --card-border-radius: 2rem;
     --border-radius-1: 0.4rem;
@@ -19,7 +23,8 @@
 
     --card-padding: 1.8rem;
     --padding-1: 1.2rem;
-    --box-shadow: 0 2rem 3rem var(--clr-light);
+    --box-shadow: 0 0 1rem rgba(0,0,0,0.1);
+    --box-shadow-table: 0 0 1rem rgba(0, 0, 0, 0.1);
 }
 
 *{
@@ -72,38 +77,101 @@ a{
     color: var(--clr-dark)
 }
 
+
+/* ********************************* */
+/* Formula Table */
+/* ********************************* */
+.for-container{
+    margin: 3rem 0;
+}
+/* formula table */
+.for-container .for-list{
+    background-color: var(--clr-card-background);
+    margin: 2rem auto;
+    width: 90%;
+    border: 1px solid transparent;
+    box-shadow: var(--box-shadow-table);
+    border-radius: var(--border-radius-1);
+}
+
+.for-container .for-list h2{
+    text-align: center;
+    font-weight: 600;
+    padding: 1rem 0;
+}
+
+.for-container .for-list table{
+    width: 100%;
+    border-radius: var(--border-radius-1);
+}
+
+.for-container .for-list .formula-list table{
+    background-color: var(--clr-white);
+    border-collapse: collapse;
+}
+
+.for-container .for-list .formula-list .for-table th{
+    background-color: var(--clr-table-header);
+    color: var(--clr-white);
+}
+
+.for-container .for-list .formula-list .for-table tr> th, td{
+    padding:0.6rem;
+    text-align: left;
+    border: 1px solid var(--clr-table-border);
+}
+
+.for-container .for-list .for-table tr>td div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.for-container .for-list .for-table td .update-item a{
+    color: var(--clr-primary-variant);
+}
+
+.for-container .for-list .for-table td .delete-item a{
+    color: var(--clr-danger);
+}
+
+
+.for-container .for-list .for-table tr:nth-child(even){
+    background-color: #f9f9f9;
+}
+/* end formula table */
+
+/* ********************************** */
 /* Formula creation form */
 .for-container .form-create{
-    max-width: 800px;
+    width: 50%;
     margin: 2rem auto;
     padding: 2rem;
     background-color: #f8f9fa;
     border-radius: 10px;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow-table);
 }
 
-.for-container h2{
+.for-container .form-create h2{
     color: #2c3e50;
     border-bottom: 2px solid #3498db;
     padding-bottom: 0.5rem;
     margin-bottom: 1.5rem;
 }
 
-.for-container form p{
+.for-container .form-create form p{
     display: flex;
     flex-direction: column;
     margin-bottom: 1.2rem;
 }
 
-.for-container label{
-    font-weight: 600;
+.for-container .form-create label{
+    font-weight: 500;
     margin-bottom: 0.4rem;
     color: #34495e;
 }
 
-.for-container input,
-.for-container select,
-.for-container textarea {
+.for-container .form-create input, select, textarea {
     padding: 0.5rem;
     border: 1px solid #ced4da;
     border-radius: var(--border-radius-1);
@@ -116,26 +184,34 @@ a{
     height: 4rem;
 }
 
-.for-container input:focus,
-.for-container select:focus,
-.for-container textarea:focus {
+.for-container .form-create input:focus,select:focus,textarea:focus {
     border-color: #3498db;
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
     outline: none;
 }
 
 /* Now syling formset table */
-.for-container .ingredient-form {
+.for-container .form-create .ingredient-form {
     background-color: white;
     border: 1px solid #dee2e6;
     border-radius: 5px;
-    padding: 1rem;
-    margin-bottom: 0.8rem;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
     transition: all 0.3s ease;
+    max-width: 100%;
+} 
+
+.for-container .form-create .ingredient-form table{
+    border-collapse:collapse;
 }
 
-.ingredient-form:hover {
+.form-create .ingredient-form:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.for-container .form-create .ingredient-form table tr>td:nth-child(even){
+    border: 1px solid #ddd;
+    width: 100%;
 }
 
 .for-container .btn-formula{
@@ -175,3 +251,272 @@ button[type="submit"]:hover {
     background-color: #2980b9;
     transform: translateY(-2px);
 }
+
+/* ******************************** */
+/* Formula Update Form */
+.formula-detail{
+    background-color:var(--clr-white);
+    width: 90%;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius-2);
+    line-height: 1.rem;
+}
+
+.formula-detail h1, h2{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.formula-detail .formula-detail-top{
+    background-color: rgba(0, 0, 0, 0.05);
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    line-height: 1.8rem;
+    margin-bottom: 2rem;
+    border-radius: var(--border-radius-1);
+}
+
+.formula-detail .formula-detail-top p{
+    color:var(--clr-dark);
+}
+
+.formula-detail .formula-detail-table{
+    width: 90%;
+    margin: 0 auto;
+}
+.formula-detail .formula-detail-table table{
+    width:100%;
+    border-collapse: collapse;
+    background-color: var(--clr-white);
+}
+
+.formula-detail .formula-detail-table table tr> th{
+    background-color: var(--clr-table-header);
+    color: var(--clr-white);
+}
+
+.formula-detail .formula-detail-table table tr> th, td{
+    padding: 0.6rem;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.formula-detail .formula-detail-table table tr:nth-child(even){
+    background-color: #f9f9f9;
+}
+
+.formula-detail .add-formula-ing form{
+    width: 100%;
+}
+/* add formula button */
+.formula-detail .add-formula-ing form button{
+    display:block;
+    width: 50%;
+    margin: 2rem auto;
+    font-size: 1.2rem;
+}
+.formula-detail .add-formula-ing form button span{
+    font-size: 1.2rem;
+}
+
+
+/* end Formula Update Page */
+/* *********************************** */
+
+
+
+/* ++++++++++++++++++++++++++++++++ */
+/* Production page where production command given */
+/* +++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+.prod-container{
+    width: 99%;
+    margin: 1rem auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+/* Production list */
+.prod-container .prod-list{
+    background-color: var(--clr-white);
+    width: 98%;
+}
+
+.prod-container .prod-list h2{
+    width: 50%;
+    text-align: center;
+    font-weight: 600;
+    border-bottom: 2px solid #3498db ;
+    padding: 0.5rem 0;
+    margin: 0 auto;
+    margin-bottom: 1.5rem;
+}
+
+.prod-container .prod-list .prod-table{
+    width: 95%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: var(--clr-white);
+}
+
+.prod-container .prod-list .prod-table tr> th{
+    background-color: var(--clr-table-header);
+    color: var(--clr-white);
+}
+
+.prod-container .prod-list .prod-table tr> th, td{
+    padding:0.6rem;
+    text-align: left;
+    border: 1px solid var(--clr-table-border);
+}
+
+.prod-container .prod-list .prod-table tr:nth-child(even){
+    background-color: #f9f9f9;;
+}
+
+.prod-container .prod-list .prod-table tr td span a{
+    color: var(--clr-danger);
+}
+/* end prodution list */
+
+/* start production form */
+.prod-container .prod-form{
+    width: 95%;
+    height: 380px;
+    margin: 1.5rem auto;
+    padding: 1.5rem 0;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--card-border-radius);
+    transition: all 0.3s ease;
+}
+
+.prod-container .prod-form:hover{
+    box-shadow: none;
+    border: 1px solid #ddd;
+}
+
+.prod-container .prod-form h2{
+    text-align: center;
+}
+
+/* start form */
+.prod-container .prod-form form{
+    width: 100%;
+    margin: 1rem auto;
+    padding: 1rem 2rem;
+}
+
+/*  Input section design*/
+.prod-container .prod-form form div{
+    display: flex;
+    align-items: center;
+}
+.prod-container .prod-form form label{
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: 700;
+    width: 55%;
+}
+
+.prod-container .prod-form form input, textarea, select{
+    border: 1px solid #ccc;
+    background-color: var(--clr-white);
+    border-radius: var(--border-radius-1);
+    transition: border-color 0.3s ease box-shadow 0.3s ease;
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+.prod-container .prod-form form textarea{
+    height: 50px;
+}
+
+.prod-container .prod-form form input:focus, textarea:focus, select:focus{
+    border-color: #155204;
+    box-shadow: 0 0 5px rgba(90, 103, 216, 0.6);
+    outline:none;
+}
+
+.prod-container .prod-form form input[type="submit"]{
+    width:45%;
+    border: none;
+    box-shadow: none;
+    margin: 1rem auto;
+    display: block;
+    background-color: var(--clr-dark);
+    color: var(--clr-white);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.prod-container .prod-form form input[type="submit"]:hover{
+    background-color: var(--clr-dark-variant);
+}
+/* end production form */
+
+
+/* ########################################################### */
+/* PRODUCTION DETAIL PAGE */
+/* ########################################################### */
+/* .prod-detail-container{
+    background: red;
+} */
+
+.prod-detail-container>h1{
+    text-align: center;
+    color: var(--clr-primary-variant);
+    margin: 1.5rem 0;
+}
+
+.prod-detail-container .prod-detail .prod-top{
+    background-color: rgba(0,0,0,0.05);
+    max-width: 95%;
+    line-height: 1.5rem;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: var(--border-radius-2);
+}
+
+.prod-detail-container .prod-detail .prod-top p{
+    color: var(--clr-dark);
+    font-size: 1.2rem;
+}
+
+/* ******************************************************** */
+/* Production detail table */
+.prod-detail-container .prod-detail .prod-table{
+    width: 95%;
+    margin: 1.4rem auto;
+    border-collapse: collapse;
+    background-color: var(--clr-white);
+}
+.prod-detail-container .prod-detail> h2{
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.prod-detail-container .prod-detail .prod-table tr> th{
+    background-color: var(--clr-table-header);
+    color: var(--clr-white);
+}
+
+.prod-detail-container .prod-detail .prod-table tr> th, td{
+    padding:0.6rem;
+    text-align: left;
+    border: 1px solid var(--clr-table-border);
+}
+
+.prod-detail-container .prod-detail .prod-table tr:nth-child(even){
+    background-color: #f9f9f9;;
+}
+
+.prod-detail-container .prod-detail .prod-table tr:last-of-type{
+    font-weight: 800;
+    background-color: red;
+}
+/* ********************************************************* */
+/* END PRODUCTION DETAIL PAGE */
+/* *********************************************************** */

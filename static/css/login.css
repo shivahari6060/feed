@@ -11,6 +11,8 @@
     --clr-primary-variant: #111e88;
     --clr-dark-variant: #677483;
     --clr-color-background: #f6f6f9;
+    --primary: hsl(220, 80%, 50%);
+    --primary-hover: hsl(220, 83%, 55%);
 
     --card-border-radius: 2rem;
     --border-radius-1: 0.4rem;
@@ -78,17 +80,26 @@ a{
 /* ****************** */
 
 .login-container{
-    background-color: var(--clr-color-background);
+    background: linear-gradient(
+    to right,
+    rgba(0, 180, 216, 0.4),   /* Teal (00b4d8) at 40% opacity */
+    rgba(23, 195, 178, 0.4),  /* Soft teal (17c3b2) */
+    rgba(44, 207, 161, 0.4)   /* Mint-teal (2ccfa1) */
+    );
     display: grid;
+    place-content: center;
+    place-items: center;
     grid-template-columns: repeat(2, 1fr);
     height: 100vh;
     width: 100vw;
 }
 
 .login-container .login{
-    width: 98%;
+    background-color: var(--clr-white);
+    width: 80%;
     height: 100%;
     padding: 2rem;
+    border-radius: var(--border-radius-2);
 }
 
 .login-container .login h1{
@@ -100,9 +111,6 @@ a{
 
 .login-container .login form{
     margin:1.2rem 0;
-    background-color: var(--clr-color-background);
-    box-shadow: var(--box-shadow);
-    border-radius: var(--card-border-radius);
     padding: 2rem;
 }
 
@@ -123,7 +131,7 @@ a{
     display: inline-block;
     margin-bottom: 0.5rem;
     padding: 0 1rem;
-    color: #607db8;
+    color: var(--primary);
     letter-spacing: 1px;
     font-size: 1rem;
 }
@@ -140,32 +148,57 @@ a{
     border-radius: 30px;
 }
 
-form button{
-    margin: 0.8rem auto;
-    width: 50%;
-    padding:0.8rem;
-    border-radius: var(--border-radius-1);
-    cursor: pointer;
-    background-color: var(--clr-primary);
+form input[type="submit"]{
+    display: block;
     outline: none;
-    font-size: 1.2rem;
-    letter-spacing: 1px;
+    margin: 0.8rem auto;
+    width: 30%;
+    padding:0.6rem;
+    border-radius: var(--border-radius-1);
+    border: 1px solid #ddd;
+    cursor: pointer;
+    background-color: var(--primary);
+    font-size: 1rem;
+    color: var(--clr-white);
+    transition: all 0.3s ease;
 }
+
+form input[type="submit"]:hover{
+    background-color:var(--primary-hover) ;
+}
+
+form input[type="checkbox"]{
+    appearance: auto;
+    width: 20px;
+    height: 20px;
+    margin-right: 0.5rem;
+}
+
+#register{
+    text-align: center;
+}
+ #register a{
+    color: var(--primary);
+ }
 
 
 /* ******************************************* */
 /* Register html section */
 /* ******************************************** */
 .register-wrapper{
-    background-color: var(--clr-color-background);
+    background: linear-gradient(
+    to right,
+    rgba(0, 180, 216, 0.4),   /* Teal (00b4d8) at 40% opacity */
+    rgba(23, 195, 178, 0.4),  /* Soft teal (17c3b2) */
+    rgba(44, 207, 161, 0.4)   /* Mint-teal (2ccfa1) */
+    );
     width: 100vw;
     height: 100vh;
-    border: 1px solid red;
 }
 
 .register-wrapper .top{
     text-align: center;
-    margin-top: 2rem;
+    padding: 2rem 0;
 }
 
 .register-wrapper .top h1{
@@ -179,7 +212,7 @@ form button{
     background-color: var(--clr-white);
     width: 50%;
     margin: 2rem auto;
-    padding: 2rem;
+    padding: 3rem 2rem;
     position: relative;
     box-shadow: var(--box-shadow);
     border-radius: var(--card-border-radius);
@@ -192,8 +225,9 @@ form button{
 }
 /* form single field wrapper */
 .register-wrapper form .fieldWrapper{
+    margin: 0 auto;
     margin-bottom:0.8rem;
-    width: 100%;
+    width: 80%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -204,14 +238,14 @@ form button{
     display: inline-block;
     margin-bottom: 0.5rem;
     padding: 0 1rem;
-    color: #607db8;
+    color: var(--primary);
     letter-spacing: 1px;
     font-size: 1rem;
 }
 
 /* user type selection */
 #id_user_type{
-    min-width: 65%;
+    min-width: 60%;
     padding: 0.7rem;
     outline: none;
     border: 1px solid #607d8b;
@@ -225,7 +259,7 @@ form button{
 
 /* field input section */
 .register-wrapper form .fieldWrapper input{
-    min-width: 65%;
+    min-width: 60%;
     padding: 0.7rem;
     outline: none;
     border: 1px solid #607d8b;
@@ -244,28 +278,28 @@ form button{
 }
 
 .register-wrapper form .register input{
-    width: 100%;
-    padding:0.8rem;
+    width: 40%;
+    padding:1rem;
     border-radius: var(--border-radius-1);
     cursor: pointer;
-    background-color: var(--clr-primary);
+    background-color: var(--primary);
     outline: none;
     font-size: 16px;
     letter-spacing: 1px;
     margin-bottom: 1.5rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
 
 }
 .register-wrapper form .register input:hover{
-    background-color: var(--clr-info-dark);
+    background-color: var(--primary-hover);
 }
 
 .register-wrapper form #have-account{
     text-align: center;
 }
 
-.register-wrapper form #have-account a:hover{
-    color: var(--clr-dark);
+.register-wrapper form #have-account a{
+    color: var(--primary);
 }
 /* end register form  */
 /* ******************* */

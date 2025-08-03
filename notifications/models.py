@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 
 class Alert(models.Model):
     ALERT_TYPES = (
-        ('low_stock', 'Low Stock'),
+        ('low stock', 'Low Stock'),
         ('production', 'Production Alert'),
         ('system', 'System Notification')
     )

@@ -19,7 +19,8 @@
 
     --card-padding: 1.8rem;
     --padding-1: 1.2rem;
-    --box-shadow: 0 2rem 3rem var(--clr-light);
+    --box-shadow: 0 0 1rem rgba(0, 0,0, 0.1);
+    --box-shadow-table: 0 0 1rem rgba(0, 0, 0, 0.1);
 }
 
 *{
@@ -117,22 +118,23 @@ a{
     justify-content: space-around;
     align-items: center;
 }
+
 .navbar-end ul li{
     padding-right:1em;
 }
 .navbar-end ul li a button{
     padding:0.7em 0.7em;
-    font-size: 1em;
+    font-size: 0.8rem;
     color: var(--clr-danger);
-    font-weight: 600;
+    font-weight: 400;
     border:1px solid gray;
     border-radius:0.25em;
     cursor:pointer;
+    transition: all 0.3s ease;
 }
 
 .navbar-end ul li a button:hover{
     background-color: var(--clr-dark-variant);
-    transition: all 0.4s ease;
     color: var(--clr-white);
 }
 /* end navbar section */
