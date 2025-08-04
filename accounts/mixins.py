@@ -7,7 +7,7 @@ class RoleRequiredMixin:
     required_roles = []
 
     def dispatch(self, request, *args, **kwargs):
-        if not request.user.is_authenticated or request.user.is_superuser or request.user.user_type not in self.required_roles:
+        if not request.user.is_authenticated or request.user.user_type not in self.required_roles:
             raise PermissionDenied
         return super().dispatch(request, *args, **kwargs)
 
