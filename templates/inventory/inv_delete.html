@@ -17,8 +17,10 @@
     <form method="post">
         {% csrf_token %}
         <button type="submit" class="btn-danger">Yes, delete</button>
-        <button><a href="{% url 'inventory:inventory-list' %}">Cancel</a></button>
     </form>
+    <div>
+        <a href="{% url 'inventory:inventory-list' %}">Cancel</a>
+    </div>
 </div>
 
 {% endblock %}

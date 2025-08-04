@@ -17,8 +17,10 @@
     <form method="post">
         {% csrf_token %}
         <button type="submit" class="btn-danger">Yes, delete</button>
-        <button><a href="{% url 'production:formula-detail' object.formula.pk %}">Cancel</a></button>
     </form>
+    <div>
+        <a href="{% url 'production:formula-detail' object.formula.pk %}">Cancel</a>
+    </div>
 </div>
 
 {% endblock %}
