@@ -8,61 +8,85 @@
 {% block title %}Home page {% endblock %}
 
 {% block content %}
+
+<!-- Home page -->
 <div class="home-container">
-    <h1>Our Services</h1>
-    <div class="services">
-        <div class="service">
-            <div class="home-card">
-                <div class="top">INVENTORY</div>
-                <hr>
-                <div class="body">
-                    <p>Lorem ipsum dolor sit amet consectetur 
-                        adipisicing elit. Ipsam ea, architecto 
-                        consequuntur saepe, eum, vero ipsa enim 
-                        impedit eos explicabo earum at ab quod. 
-                        Neque, reprehenderit! Repudiandae
-                         quisquam amet perspiciatis?</p>
-                </div>
-                <div class="bottom">
-                    <a href="#">Inventory</a>
-                </div>
-            </div>
+
+    <!-- Hero section of Home page -->
+    <div class="hero-section">
+        <div class="hero-left">
+            <h1 class="head ">Feed Formulation System</h1>
+            <p class="para">Make Feed Formulation more robust and efficient for better production environment that supports business motives.</p>
         </div>
-        <div class="service">
-            <div class="home-card">
-                <div class="top">PRODUCTION</div>
-                <hr>
-                <div class="body">
-                    <p>Lorem ipsum dolor sit amet consectetur 
-                        adipisicing elit. Ipsam ea, architecto 
-                        consequuntur saepe, eum, vero ipsa enim 
-                        impedit eos explicabo earum at ab quod. 
-                        Neque, reprehenderit! Repudiandae
-                         quisquam amet perspiciatis?</p>
-                </div>
-                <div class="bottom">
-                    <a href="#">Production</a>
-                </div>
-            </div>
-        </div>
-        <div class="service">
-            <div class="home-card">
-                <div class="top">SALES</div>
-                <hr>
-                <div class="body">
-                    <p>Lorem ipsum dolor sit amet consectetur 
-                        adipisicing elit. Ipsam ea, architecto 
-                        consequuntur saepe, eum, vero ipsa enim 
-                        impedit eos explicabo earum at ab quod. 
-                        Neque, reprehenderit! Repudiandae
-                         quisquam amet perspiciatis?</p>
-                </div>
-                <div class="bottom">
-                    <a href="#">Sales</a>
-                </div>
-            </div>
+        <div class="hero-right">
+            <img src="{% static 'img/poultry.png' %}" alt="feed formation">
         </div>
     </div>
+
+    <!-- Our services section -->
+     <div class="services-content">
+        <h1>OUR SERVICES</h1>
+        <div class="services">
+            <div class="service">
+                <div class="home-card">
+                    <div class="top">INVENTORY</div>
+                    <hr>
+                    <div class="body">
+                        <p>Lorem ipsum dolor sit amet consectetur 
+                            adipisicing elit. Ipsam ea, architecto 
+                            consequuntur saepe, eum, vero ipsa enim 
+                            impedit eos explicabo earum at ab quod. 
+                            Neque, reprehenderit! Repudiandae
+                            quisquam amet perspiciatis?</p>
+                    </div>
+                    <div class="bottom">
+                        <a href="{% url 'inventory:inventory-list' %}">Inventory</a>
+                    </div>
+                </div>
+            </div>
+            <div class="service">
+                <div class="home-card">
+                    <div class="top">PRODUCTION</div>
+                    <hr>
+                    <div class="body">
+                        <p>Lorem ipsum dolor sit amet consectetur 
+                            adipisicing elit. Ipsam ea, architecto 
+                            consequuntur saepe, eum, vero ipsa enim 
+                            impedit eos explicabo earum at ab quod. 
+                            Neque, reprehenderit! Repudiandae
+                            quisquam amet perspiciatis?</p>
+                    </div>
+                    <div class="bottom">
+                        <a href="{% url 'production:production' %}">Production</a>
+                    </div>
+                </div>
+            </div>
+            <div class="service">
+                <div class="home-card">
+                    <div class="top">DASHBOARD</div>
+                    <hr>
+                    <div class="body">
+                        <p>Lorem ipsum dolor sit amet consectetur 
+                            adipisicing elit. Ipsam ea, architecto 
+                            consequuntur saepe, eum, vero ipsa enim 
+                            impedit eos explicabo earum at ab quod. 
+                            Neque, reprehenderit! Repudiandae
+                            quisquam amet perspiciatis?</p>
+                    </div>
+                    <div class="bottom">
+                        <a href="#">Dashboard</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+    
+    <!-- end of our services -->
+
+    <!-- Testimonials -->
+     <!-- <div class="testimonials">
+        <div class="testop"><h1>Testimonials</h1></div>
+     </div> -->
 </div>
 
 

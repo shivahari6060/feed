@@ -11,6 +11,10 @@
     --clr-primary-variant: #111e88;
     --clr-dark-variant: #677483;
     --clr-color-background: #f6f6f9;
+    --hero-background: #4B0082;
+    --hero-text: #E5E4E2;
+    --clr-footer: #333333;
+    --clr-dark-green: #035A52;
 
     --card-border-radius: 2rem;
     --border-radius-1: 0.4rem;
@@ -21,6 +25,7 @@
     --padding-1: 1.2rem;
     --box-shadow: 0 0 1rem rgba(0, 0,0, 0.1);
     --box-shadow-table: 0 0 1rem rgba(0, 0, 0, 0.1);
+    --text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
 }
 
 *{
@@ -57,12 +62,6 @@ h5{
     font-size:0.75rem;
 }
 
-/* .profile-photo img{
-    width: 2.8rem;
-    height: 2.8rem;
-    border-radius: 50%;
-    overflow: hidden;
-} */
 .text-muted{
     color: var(--clr-info-dark);
 }    
@@ -70,7 +69,7 @@ b{
     color: var(--clr-dark);
 } 
 p{
-    color: var(--clr-dark-variant);
+    color: var(--clr-dark);
 }
 /* small bold and paragraph end */
 
@@ -88,7 +87,6 @@ a{
 }
 .navbar-logo{
     padding: 1rem;
-    color:rgb(0, 208, 130);
 }
 .navbar-logo p a{
     font-size: 1.8rem;
@@ -96,8 +94,15 @@ a{
     font-weight: 600;
 
 }
+
+.navbar-logo p #vet{
+    font-size: 1.8rem;
+    color: var(--hero-background);
+}
+
 .navbar-logo p span{
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    color: var(--hero-background);
 }
 .navbar-menu ul{
     display: flex;
@@ -146,25 +151,72 @@ a{
 
 /* Home services section */
 .home-container{
-    width: 94%;
-    border: 1px solid red;
-    margin: 1rem auto;
+    width: 99%;
+    margin: 0 auto;
 }
-.home-container h1{
-    text-align: center;
-    font-size: 2.5rem;
+
+/* Hero Section */
+.home-container .hero-section{
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--hero-background);
+}
+
+.home-container .hero-section .hero-left >h1{
+    font-size: 3rem;
     margin-bottom: 1.3rem;
 }
 
+.home-container .hero-section .hero-left >.para{
+    font-size: 1.1rem;
+}
+
+.home-container .hero-section .hero-left > .head,.para{
+    color: var(--hero-text);
+    text-shadow: var(--text-shadow);
+    text-align: center;
+}
+
+.home-container .hero-section .hero-right img{
+    height: 350px;
+    width: 350px;
+    border-radius: 50%;
+}
+
+/* End hero section */
+.home-container .services-content{
+    margin: 3rem 0;
+}
+.home-container .services-content h1{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    margin: 2rem 0;
+    color: var(--clr-dark-green);
+}
+
+.home-container .services-content h1::before,
+.home-container .services-content h1::after {
+    content: "";
+    flex: 1;
+    border-bottom: 3px solid var(--clr-dark-green);
+    margin: 0 1rem; /* space between line and text */
+}
+
 .home-container .services{
+    width: 90%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    border: 1px solid green;
     gap: 2rem;
+    margin:2rem auto;
 }
+
 .home-container .services .service{
-    border: 1px solid coral;
-    
+    min-height: 300px;
+    background: var(--clr-white);
 }
 
 .home-container .services .service .home-card{
@@ -172,7 +224,9 @@ a{
     background-color: var(--clr-white);
     box-shadow: var(--box-shadow);
     border-radius: var(--card-border-radius);
+    border: 1px solid #ddd;
     height: 40vh;
+    position: relative;
 }
 
 .home-container .services .service .home-card:hover{
@@ -181,27 +235,38 @@ a{
 }
 
 .home-container .services .service .home-card .top{
-    font-size: 1.8rem;
-    text-align: center;
-    font-weight: 500;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--clr-dark-green);
+    padding: 1rem;
 }
 .home-container .services .service .home-card .body{
     margin: 1rem 0;
+    padding: 0 1rem;
 }
 
 .home-container .services .service .home-card .body p{
-    color:var(--clr-info-dark);
-    font-size: 1.2rem;
+    color:var(--clr-dark);
+    font-size: 1rem;
+}
+.home-container .services .service .home-card .bottom{
+    padding: 1rem;
 }
 
 .home-container .services .service .home-card a{
     outline: none;
     cursor:pointer;
-    background-color: var(--clr-dark);
+    background-color: var(--hero-background);
     padding:0.6rem;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     border-radius: var(--border-radius-1);
     color: var(--clr-white);
+    transition: all 0.3s ease;
+    position:relative;
+}
+
+.home-container .services .service .home-card a:hover{
+    background-color: var(--clr-dark-green);
 }
 /* Home services section end */
 
@@ -220,7 +285,8 @@ a{
     margin: 0;
     width: 100%;
     font-weight: 700;
-    background: var(--clr-dark-variant);
+    background: var(--clr-footer);
+    color: var(--clr-info-dark);
 }
 .footer p{
     color: var(--clr-info-light);
